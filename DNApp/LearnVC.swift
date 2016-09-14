@@ -30,6 +30,12 @@ class LearnVC: UIViewController {
     @IBAction func learnButtonPressed (sender: UIButton) {
         imageView.animation = "pop"
         imageView.animate()
+        
+        openURL("http://designcode.io")
+    }
+    
+    @IBAction func twitterButtonDidTouch(sender: UIButton) {
+        openURL("http://twitter.com/TheHorbach")
     }
     
     @IBAction func backButtonPressed (sender: UIButton) {
@@ -37,5 +43,10 @@ class LearnVC: UIViewController {
         dialogView.animateNext { 
             self.dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+    
+    func openURL(url: String) {
+        let target = NSURL(string: url)
+        UIApplication.sharedApplication().openURL(target!)
     }
 }

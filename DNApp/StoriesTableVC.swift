@@ -10,6 +10,8 @@ import UIKit
 
 class StoriesTableVC: UITableViewController, StoryTableViewCellDelegate {
     
+    let transitionManager = TransitionManager()
+    
     override func viewDidLoad() {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension 
@@ -17,7 +19,7 @@ class StoriesTableVC: UITableViewController, StoryTableViewCellDelegate {
 
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("WebSegue", sender: self)
+        performSegueWithIdentifier("WebSegue", sender: indexPath)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -53,13 +55,28 @@ class StoriesTableVC: UITableViewController, StoryTableViewCellDelegate {
     }
     
     func storyTableViewCellDidTouchComment(cell: StoryTableViewCell, sender: AnyObject) {
-        performSegueWithIdentifier("CommentsSegue", sender: self)
+        performSegueWithIdentifier("CommentsSegue", sender: cell )
     }
     
     // MARK: Misc
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        <#code#>
+        if segue.identifier == "CommentsSegue" {
+            let toView = segue.destinationViewController as! CommentsTableVC
+            let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)!
+            toView.story = data[indexPath.row]
+        }
+        
+        if segue.identifier == "WebSegue" {
+            let toView = segue.destinationViewController as! WebVC
+            let indexPath = sender as! NSIndexPath
+            let url = data[indexPath.row]["url"].string
+            toView.url = url
+            
+            UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
+            
+            toView.transitioningDelegate = transitionManager
+        }
     }
     
 }

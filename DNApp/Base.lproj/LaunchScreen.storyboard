@@ -17,11 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="8-Startup" translatesAutoresizingMaskIntoConstraints="NO" id="HI9-5o-zM3">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBm-9b-av8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.29411764705882354" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="LbK-8D-lAT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RBm-9b-av8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="0XU-lS-oSk"/>
+                            <constraint firstAttribute="trailing" secondItem="RBm-9b-av8" secondAttribute="trailing" id="9ZH-VN-APr"/>
+                            <constraint firstItem="RBm-9b-av8" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Zmq-gA-U6P"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
@@ -30,7 +39,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="8-Startup" width="320" height="568"/>
-    </resources>
 </document>
